@@ -20,17 +20,23 @@ DES[3]="\342\224\200" # Linha horizontal
 
 # Partes
 
-USER="${COR[0]}\u"
-SERVER="${COR[6]}\h"
-DIR="${COR[2]}\w"
-SEPARADOR="${COR[5]}${DES[3]}"
 ANTES="${COR[5]}${DES[0]}"
-DEPOIS="\n${COR[5]}${DES[1]}"
-HORARIO="${COR[7]}\t"
-CURSOR="${COR[1]} \$ "
-MSG="${COR[3]}[${COR[1]}${DES[2]}${COR[3]}]${COR[5]}${DES[3]}"
 
+MSG="${COR[3]}[${COR[1]}${DES[2]}${COR[3]}]${COR[5]}${DES[3]}"
 ERRO='$([[ $? != 0 ]] && echo "'${MSG}'")'
+
+USER="${COR[6]}\u"
+SERVER="${COR[4]}\h"
+SEPARADOR="${COR[5]}${DES[3]}"
+DIR="${COR[2]}\w"
+HORARIO="${COR[7]}\t"
+
+DEPOIS="\n${COR[5]}${DES[1]}"
+CURSOR="${COR[1]} \$ "
 
 PS1="${ANTES}${ERRO}${COR[7]}[${USER}${COR[3]}@${SERVER}${COR[7]}]${SEPARADOR}${COR[7]}[${DIR}${COR[7]}]${COR[3]}(${HORARIO}${COR[3]})${DEPOIS}${CURSOR}${COR[0]}"
 
+echo "Colocar no .bashrc:"
+echo
+echo 'PS1="'$PS1'"'
+echo
