@@ -13,10 +13,9 @@ COR[7]="\[\033[1;37m\]" # Branco
 COR[8]="\[\033[01;96m\]" # Azul Claro
 
 DES[0]="\342\224\214\342\224\200" # Linha de canto
-DES[1]="" # Linha vertical
-DES[2]="\342\224\224\342\224\200\342\224\200\342\225\274" # Linha e ponto
-DES[3]="\342\234\227" # Sinal de erro
-DES[4]="\342\224\200" # Linha horizontal
+DES[1]="\342\224\224\342\224\200\342\224\200\342\225\274" # Linha e ponto
+DES[2]="\342\234\227" # Sinal de erro
+DES[3]="\342\224\200" # Linha horizontal
 
 
 # Partes
@@ -24,12 +23,12 @@ DES[4]="\342\224\200" # Linha horizontal
 USER="${COR[0]}\u"
 SERVER="${COR[6]}\h"
 DIR="${COR[2]}\w"
-SEPARADOR="${COR[3]}${DES[4]}"
+SEPARADOR="${COR[3]}${DES[3]}"
 ANTES="${DES[0]}"
-DEPOIS="\n${COR[5]}${DES[2]}"
+DEPOIS="\n${COR[5]}${DES[1]}"
 HORARIO="${COR[7]}\t"
 CURSOR="${COR[1]} \$ "
-MSG="${COR[7]}[${COR[7]}${DES[3]}${COR[7]}]${COR[7]}${DES[4]}"
+MSG="${COR[7]}[${COR[7]}${DES[2]}${COR[7]}]${COR[7]}${DES[3]}"
 
 ERRO='$([[ $? != 0 ]] && echo "'${MSG}'")'
 
