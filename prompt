@@ -23,12 +23,12 @@ DES[3]="\342\224\200" # Linha horizontal
 USER="${COR[0]}\u"
 SERVER="${COR[6]}\h"
 DIR="${COR[2]}\w"
-SEPARADOR="${COR[3]}${DES[3]}"
-ANTES="${DES[0]}"
+SEPARADOR="${COR[5]}${DES[3]}"
+ANTES="${COR[5]}${DES[0]}"
 DEPOIS="\n${COR[5]}${DES[1]}"
 HORARIO="${COR[7]}\t"
 CURSOR="${COR[1]} \$ "
-MSG="${COR[7]}[${COR[7]}${DES[2]}${COR[7]}]${COR[7]}${DES[3]}"
+MSG="${COR[3]}[${COR[1]}${DES[2]}${COR[3]}]${COR[5]}${DES[3]}"
 
 ERRO='$([[ $? != 0 ]] && echo "'${MSG}'")'
 
