@@ -31,12 +31,15 @@ SEPARADOR="${COR[5]}${DES[3]}"
 DIR="${COR[2]}\w"
 HORARIO="${COR[7]}\t"
 
+BATERIA='$(cat /sys/devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/PNP0C0A:00/power_supply/BAT0/capacity)'
 DEPOIS="\n${COR[5]}${DES[1]}"
 CURSOR="${COR[1]} \$ "
 
-PS1="${ANTES}${ERRO}${COR[7]}[${USER}${COR[3]}@${SERVER}${COR[7]}]${SEPARADOR}${COR[7]}[${DIR}${COR[7]}]${COR[3]}(${HORARIO}${COR[3]})${DEPOIS}${CURSOR}${COR[0]}"
+
+PS1="${ANTES}${ERRO}${COR[7]}[${USER}${COR[3]}@${SERVER}${COR[7]}]${SEPARADOR}${COR[7]}[${DIR}${COR[7]}]${COR[3]}(${HORARIO}${COR[3]}) ${COR[3]}[${COR[7]}${BATERIA}%${COR[3]}]${DEPOIS}${CURSOR}${COR[0]}"
+#PS1="${ANTES}${ERRO}${COR[7]}[${USER}${COR[3]}@${SERVER}${COR[7]}]${SEPARADOR}${COR[7]}[${DIR}${COR[7]}]${COR[3]}(${HORARIO}${COR[3]})${DEPOIS}${CURSOR}${COR[0]}"
 
 echo "Colocar no .bashrc:"
 echo
-echo 'PS1="'$PS1'"'
+echo "PS1='$PS1'"
 echo
