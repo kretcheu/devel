@@ -10,7 +10,7 @@ COR[4]="\[\e[1;34m\]" # Azul
 COR[5]="\[\e[1;35m\]" # Roxo
 COR[6]="\[\e[1;36m\]" # Cian
 COR[7]="\[\e[1;37m\]" # Branco
-COR[8]="\[\e[01;96m\]" # Azul Claro
+COR[8]="\[\e[1;96m\]" # Azul Claro
 
 DES[0]="\342\224\214\342\224\200" # Linha de canto
 DES[1]="\342\224\224\342\224\200\342\224\200\342\225\274" # Linha e ponto
@@ -25,7 +25,7 @@ ANTES="${COR[5]}${DES[0]}"
 MSG="${COR[3]}[${COR[1]}${DES[2]}${COR[3]}]${COR[5]}${DES[3]}"
 ERRO='$([[ $? != 0 ]] && echo "'${MSG}'")'
 
-USER="${COR[6]}\u"
+USER="${COR[8]}\u"
 SERVER="${COR[4]}\h"
 SEPARADOR="${COR[5]}${DES[3]}"
 DIR="${COR[2]}\w"
