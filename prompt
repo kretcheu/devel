@@ -2,15 +2,15 @@
 
 # Cores
 
-COR[0]="\[\033[0m\]" # Normal
-COR[1]="\[\033[1;31m\]" # Vermelho
-COR[2]="\[\033[1;32m\]" # Verde
-COR[3]="\[\033[1;33m\]" # Amarelo
-COR[4]="\[\033[1;34m\]" # Azul
-COR[5]="\[\033[1;35m\]" # Roxo
-COR[6]="\[\033[1;36m\]" # Cian
-COR[7]="\[\033[1;37m\]" # Branco
-COR[8]="\[\033[01;96m\]" # Azul Claro
+COR[0]="\[\e[0m\]" # Normal
+COR[1]="\[\e[1;31m\]" # Vermelho
+COR[2]="\[\e[1;32m\]" # Verde
+COR[3]="\[\e[1;33m\]" # Amarelo
+COR[4]="\[\e[1;34m\]" # Azul
+COR[5]="\[\e[1;35m\]" # Roxo
+COR[6]="\[\e[1;36m\]" # Cian
+COR[7]="\[\e[1;37m\]" # Branco
+COR[8]="\[\e[01;96m\]" # Azul Claro
 
 DES[0]="\342\224\214\342\224\200" # Linha de canto
 DES[1]="\342\224\224\342\224\200\342\224\200\342\225\274" # Linha e ponto
