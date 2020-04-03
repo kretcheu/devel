@@ -1,0 +1,2 @@
+## Pseudo DDNS
+*/20 * * * * root    /usr/local/bin/warning

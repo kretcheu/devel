@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# DDNS GNUWorks
+
+/usr/bin/wget -t 2 -q -O /tmp/ip http://gnu.works/ip?c=cv
+
