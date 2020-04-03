@@ -110,7 +110,7 @@ esac
 ANTES="${COR_BASE}${DES[0]}"
 
 MSG="${COR[3]}[${COR[1]}${DES[2]}${COR[3]}]${CORBASE}${DES[3]}"
-ERRO='$([[ $? != 0 ]] && echo "'${MSG}'")'
+#ERRO='$([[ $? != 0 ]] && echo "'${MSG}'")'
 
 USER="${COR_USER}\u"
 SERVER="${COR_SERVER}\h"
@@ -135,10 +135,10 @@ echo "Normalmente no arquivo ~/.bashrc ou para todos os usuários em /etc/bash.b
 echo
 echo "Testado em versões Buster e Sid do Debian, mas deve funcionar em muitas outras."
 echo
-echo "PS1='$PS1'"
+echo "PS1=\"$PS1\""
 echo
 echo "--- Essa é a amostra de como ficará o terminal -------------------------------------------------------"
 echo
 printf '%s\n' "${PS1@P}"
-echo "-----------------------------------------------i------------------------------------------------------"
+echo "------------------------------------------------------------------------------------------------------"
 echo
