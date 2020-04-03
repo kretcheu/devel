@@ -18,24 +18,53 @@ DES[2]="\342\234\227" # Sinal de erro
 DES[3]="\342\224\200" # Linha horizontal
 
 # Definição do Tema
+case $1 in
+   1)
+	COR_BASE=${COR[1]}
+	COR_USER=${COR[3]}
+	COR_ARROBA=${COR[7]}
+	COR_SERVER=${COR[6]}
+	COR_DIR=${COR[3]}
+	COR_HORARIO=${COR[7]}
+	COR_BATERIA=${COR[3]}
+	COR_CURSOR=${COR[7]}
+   ;;
 
-#COR_BASE=${COR[1]}
-#COR_USER=${COR[3]}
-#COR_ARROBA=${COR[7]}
-#COR_SERVER=${COR[6]}
-#COR_DIR=${COR[3]}
-#COR_HORARIO=${COR[7]}
-#COR_BATERIA=${COR[3]}
-#COR_CURSOR=${COR[7]}
+   2)
+	COR_BASE=${COR[5]}
+	COR_USER=${COR[6]}
+	COR_ARROBA=${COR[3]}
+	COR_SERVER=${COR[4]}
+	COR_DIR=${COR[2]}
+	COR_HORARIO=${COR[7]}
+	COR_BATERIA=${COR[7]}
+	COR_CURSOR=${COR[1]}
+   ;;
 
-COR_BASE=${COR[5]}
-COR_USER=${COR[6]}
-COR_ARROBA=${COR[3]}
-COR_SERVER=${COR[4]}
-COR_DIR=${COR[2]}
-COR_HORARIO=${COR[7]}
-COR_BATERIA=${COR[7]}
-COR_CURSOR=${COR[1]}
+   3)
+	COR_BASE=${COR[2]}
+	COR_USER=${COR[6]}
+	COR_ARROBA=${COR[3]}
+	COR_SERVER=${COR[7]}
+	COR_DIR=${COR[7]}
+	COR_HORARIO=${COR[7]}
+	COR_BATERIA=${COR[7]}
+	COR_CURSOR=${COR[2]}
+   ;;
+
+   *)
+	COR_BASE=${COR[1]}
+	COR_USER=${COR[3]}
+	COR_ARROBA=${COR[7]}
+	COR_SERVER=${COR[6]}
+	COR_DIR=${COR[3]}
+	COR_HORARIO=${COR[7]}
+	COR_BATERIA=${COR[3]}
+	COR_CURSOR=${COR[7]}
+   ;;
+
+esac
+
 
 # Partes
 
@@ -54,13 +83,17 @@ BATERIA='['${COR_BATERIA}'$(cat /sys/devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/
 DEPOIS="\n${COR_BASE}${DES[1]}"
 CURSOR="${COR_CURSOR} "'\$'" "
 
-PS1="${ANTES}${ERRO}${COR_BASE}[${USER}${COR_ARROBA}@${SERVER}${COR_BASE}]${SEPARADOR}${COR_BASE}[${DIR}${COR_BASE}]${SEPARADOR}[${HORARIO}${COR_BASE}]${SEPARADOR}${BATERIA}${DEPOIS}${CURSOR}${COR[0]}"
+#LOADAVERAGE='['${COR_BATERIA}'$(loadaverage)'${COR_BASE}']'
+LOADAVERAGE=""
 
-#SAMPLE="${ANTES}${ERRO}${COR_BASE}[${USER}${COR_ARROBA}@${SERVER}${COR_BASE}]${SEPARADOR}${COR_BASE}[${DIR}${COR_BASE}]${SEPARADOR}[${HORARIO}${COR_BASE}]${SEPARADOR}${BATERIA}${DEPOIS}${CURSOR}${COR[0]}"
-
+PS1="${ANTES}${ERRO}${COR_BASE}[${USER}${COR_ARROBA}@${SERVER}${COR_BASE}]${SEPARADOR}${COR_BASE}[${DIR}${COR_BASE}]${SEPARADOR}[${HORARIO}${COR_BASE}]${SEPARADOR}${BATERIA}${SEPARADOR}${LOADAVERAGE}${DEPOIS}${CURSOR}${COR[0]}"
 
 echo "Colocar no .bashrc:"
 echo
 echo "PS1='$PS1'"
 echo
-#echo "${SAMPLE}"
+echo "-----------------------------------------------------"
+printf '%s\n' "${PS1@P}"
+echo "-----------------------------------------------------"
+echo
+
