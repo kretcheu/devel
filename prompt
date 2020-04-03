@@ -102,11 +102,15 @@ SEPARADOR="${COR_BASE}${DES[3]}"
 DIR="${COR_DIR}\w"
 HORARIO="${COR_HORARIO}\t"
 
-BATERIA='['${COR_BATERIA}'$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 |grep percentage | awk {'"\039 print \$2 \039 })"${COR_BASE}']'
+
+ASPAS="'"
+BATERIA='['${COR_BATERIA}'$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 |grep percentage | awk {'${ASPAS}' print $2" " '"${ASPAS}"'})'${COR_BASE}']'
+#BATERIA=""
 DEPOIS="\n${COR_BASE}${DES[1]}"
 CURSOR="${COR_CURSOR} "'\$'" "
 
-LOADAVERAGE='['${COR_BATERIA}'$(  uptime | awk {'"\039 print \$9\" \" \$10\" \" \$11 \039 })"${COR_BASE}']'
+LOADAVERAGE='['${COR_BATERIA}'$(uptime | awk {'${ASPAS}' print $8" " $9" " $10'"${ASPAS}"'})'${COR_BASE}']'
+#LOADAVERAGE=""
 
 PS1="${ANTES}${ERRO}${COR_BASE}[${USER}${COR_ARROBA}@${SERVER}${COR_BASE}]${SEPARADOR}${COR_BASE}[${DIR}${COR_BASE}]${SEPARADOR}[${HORARIO}${COR_BASE}]${SEPARADOR}${BATERIA}${SEPARADOR}${LOADAVERAGE}${DEPOIS}${CURSOR}${COR[0]}"
 
@@ -114,7 +118,7 @@ echo "Colocar no .bashrc:"
 echo
 echo "PS1='$PS1'"
 echo
-echo "-----------------------------------------------------"
+echo "--------------------------------------------------------------------------"
 printf '%s\n' "${PS1@P}"
-echo "-----------------------------------------------------"
+echo "--------------------------------------------------------------------------"
 echo
