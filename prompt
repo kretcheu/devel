@@ -123,7 +123,7 @@ ASPAS="'"
 BATERIA='['${COR_BATERIA}'$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 |grep percentage | awk {'${ASPAS}' print $2'"${ASPAS}"'})'${COR_BASE}']'
 #BATERIA=""
 DEPOIS="\n${COR_BASE}${DES[1]}"
-CURSOR="${COR_CURSOR} "'\$'" "
+CURSOR="${COR_CURSOR} "'\\$'" "
 
 LOADAVERAGE='['${COR_BATERIA}'$(uptime | awk {'${ASPAS}' print $8" " $9" " $10'"${ASPAS}"'})'${COR_BASE}']'
 #LOADAVERAGE=""
