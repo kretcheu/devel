@@ -52,6 +52,28 @@ case $1 in
 	COR_CURSOR=${COR[2]}
    ;;
 
+   4)
+	COR_BASE=${COR[3]}
+	COR_USER=${COR[6]}
+	COR_ARROBA=${COR[3]}
+	COR_SERVER=${COR[7]}
+	COR_DIR=${COR[7]}
+	COR_HORARIO=${COR[7]}
+	COR_BATERIA=${COR[7]}
+	COR_CURSOR=${COR[2]}
+   ;;
+
+   5)
+        COR_BASE=${COR[6]}
+        COR_USER=${COR[6]}
+        COR_ARROBA=${COR[3]}
+        COR_SERVER=${COR[7]}
+        COR_DIR=${COR[7]}
+        COR_HORARIO=${COR[7]}
+        COR_BATERIA=${COR[7]}
+        COR_CURSOR=${COR[2]}
+   ;;
+
    *)
 	COR_BASE=${COR[1]}
 	COR_USER=${COR[3]}
@@ -62,6 +84,7 @@ case $1 in
 	COR_BATERIA=${COR[3]}
 	COR_CURSOR=${COR[7]}
    ;;
+
 
 esac
 
