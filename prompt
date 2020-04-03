@@ -130,11 +130,15 @@ LOADAVERAGE='['${COR_BATERIA}'$(uptime | awk {'${ASPAS}' print $8" " $9" " $10'"
 
 PS1="${ANTES}${ERRO}${COR_BASE}[${USER}${COR_ARROBA}@${SERVER}${COR_BASE}]${SEPARADOR}${COR_BASE}[${DIR}${COR_BASE}]${SEPARADOR}[${HORARIO}${COR_BASE}]${SEPARADOR}${BATERIA}${SEPARADOR}${LOADAVERAGE}${DEPOIS}${CURSOR}${COR[0]}"
 
-echo "Colocar no .bashrc:"
+echo "Pare ter essa aparência no terminal vai precisar substituir a definição da variável PS1."
+echo "Normalmente no arquivo ~/.bashrc ou para todos os usuários em /etc/bash.bashrc"
+echo
+echo "Testado em versões Buster e Sid do Debian, mas deve funcionar em muitas outras."
 echo
 echo "PS1='$PS1'"
 echo
-echo "--------------------------------------------------------------------------"
+echo "--- Essa é a amostra de como ficará o terminal -------------------------------------------------------"
+echo
 printf '%s\n' "${PS1@P}"
-echo "--------------------------------------------------------------------------"
+echo "-----------------------------------------------i------------------------------------------------------"
 echo
