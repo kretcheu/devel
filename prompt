@@ -37,7 +37,7 @@ lista=$1
 
 if [ $# -eq 0 ]
 then
-   lista='1 2 3 4 5 6 7'
+   lista='1 2 3 4 5 6 7 8'
    orientacao="Usage: prompt [theme]"
 fi
 
@@ -118,6 +118,17 @@ for i in $lista; do
 	COR_DIR=${COR[3]}
 	COR_HORARIO=${COR[7]}
 	COR_BATERIA=${COR[3]}
+	COR_CURSOR=${COR[7]}
+      ;;
+
+      8)
+	COR_BASE=${COR[7]}
+	COR_USER=${COR[1]}
+	COR_ARROBA=${COR[7]}
+	COR_SERVER=${COR[1]}
+	COR_DIR=${COR[1]}
+	COR_HORARIO=${COR[1]}
+	COR_BATERIA=${COR[1]}
 	COR_CURSOR=${COR[7]}
       ;;
 
