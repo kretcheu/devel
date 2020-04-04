@@ -128,13 +128,14 @@ HORARIO="${COR_HORARIO}\t"
 
 
 ASPAS="'"
-BATERIA='['${COR_BATERIA}'$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 |grep percentage | awk {'${ASPAS}' print $2'"${ASPAS}"'})'${COR_BASE}']'
+#BATERIA='['${COR_BATERIA}'$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 |grep percentage | awk {'${ASPAS}' print $2'"${ASPAS}"'})'${COR_BASE}']'
+BATERIA='['${COR_BATERIA}'$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 |grep percentage | cut -c 26-29)'${COR_BASE}']'
 #BATERIA=""
 DEPOIS="\n${COR_BASE}${DES[1]}"
 CURSOR="${COR_CURSOR} "'\\$'" "
 
-LOADAVERAGE='['${COR_BATERIA}'$(uptime | awk {'${ASPAS}' print $8" " $9" " $10'"${ASPAS}"'})'${COR_BASE}']'
-#LOADAVERAGE=""
+#LOADAVERAGE='['${COR_BATERIA}'$(uptime | awk {'${ASPAS}' print $8" " $9" " $10'"${ASPAS}"'})'${COR_BASE}']'
+LOADAVERAGE='['${COR_BATERIA}'$(uptime | rev | cut -c 1-16 | rev)'${COR_BASE}']'
 
 PS1="${ANTES}${ERRO}${COR_BASE}[${USER}${COR_ARROBA}@${SERVER}${COR_BASE}]${SEPARADOR}${COR_BASE}[${DIR}${COR_BASE}]${SEPARADOR}[${HORARIO}${COR_BASE}]${SEPARADOR}${BATERIA}${SEPARADOR}${LOADAVERAGE}${DEPOIS}${CURSOR}${COR[0]}"
 
@@ -146,7 +147,7 @@ PS1="${ANTES}${ERRO}${COR_BASE}[${USER}${COR_ARROBA}@${SERVER}${COR_BASE}]${SEPA
       echo
       echo "Testado em versões Buster e Sid do Debian, mas deve funcionar em muitas outras."
       echo
-      echo "PS1=\"$PS1\""
+      echo "PS1='$PS1'"
    fi
 
    echo
