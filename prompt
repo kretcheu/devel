@@ -37,7 +37,7 @@ lista=$1
 
 if [ $# -eq 0 ]
 then
-   lista='1 2 3 4 5'
+   lista='1 2 3 4 5 6 7'
    orientacao="Usage: prompt [theme]"
 fi
 
@@ -99,6 +99,28 @@ for i in $lista; do
         COR_CURSOR=${COR[2]}
       ;;
 
+      6)
+        COR_BASE=${COR[4]}
+        COR_USER=${COR[6]}
+        COR_ARROBA=${COR[3]}
+        COR_SERVER=${COR[7]}
+        COR_DIR=${COR[3]}
+        COR_HORARIO=${COR[7]}
+        COR_BATERIA=${COR[7]}
+        COR_CURSOR=${COR[2]}
+      ;;
+
+      7)
+	COR_BASE=${COR[7]}
+	COR_USER=${COR[3]}
+	COR_ARROBA=${COR[7]}
+	COR_SERVER=${COR[6]}
+	COR_DIR=${COR[3]}
+	COR_HORARIO=${COR[7]}
+	COR_BATERIA=${COR[3]}
+	COR_CURSOR=${COR[7]}
+      ;;
+
       *)
 	COR_BASE=${COR[1]}
 	COR_USER=${COR[3]}
@@ -148,9 +170,9 @@ PS1="${ANTES}${ERRO}${COR_BASE}[${USER}${COR_ARROBA}@${SERVER}${COR_BASE}]${SEPA
       echo "Testado em versões Buster e Sid do Debian, mas deve funcionar em muitas outras."
       echo
       echo "PS1='$PS1'"
+      echo
    fi
 
-   echo
    echo "--- Essa é a amostra do tema $i de como ficará o terminal ---------------------------------------------"
    echo
    printf '%s\n' "${PS1@P}"
