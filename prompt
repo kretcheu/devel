@@ -153,10 +153,7 @@ PS1="${ANTES}${ERRO}${COR_BASE}[${USER}${COR_ARROBA}@${SERVER}${COR_BASE}]${SEPA
    echo "--- Essa é a amostra do tema $i de como ficará o terminal ---------------------------------------------"
    echo
    printf '%s\n' "${PS1@P}"
-   echo "------------------------------------------------------------------------------------------------------"
    echo
-
-
 done
 
 echo "$orientacao"
