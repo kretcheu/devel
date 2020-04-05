@@ -7,11 +7,7 @@ $buffer = $ENV{'QUERY_STRING'};
 $localtime=localtime;
 $time=time;
 
-open (FILE,">>logs/cv_c.txt");
-	print (FILE "$localtime#$addr#$time\n");
-close(FILE);
-
-open (FILE,">logs/cv.txt");
+open (FILE,">logs/ge.txt");
 	print (FILE "$localtime#$addr#$time\n");
 close(FILE);
 

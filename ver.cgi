@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl -w
+#!/usr/bin/perl -w
 ##############################################################################
 # COPYLEFT NOTICE  JPL   ver.cgi                                                                                                         #
 ##############################################################################
@@ -8,7 +8,7 @@ print "<html><head><META HTTP-EQUIV=\"REFRESH\" CONTENT=\"900;URL=http://gnu.wor
 print "<body bgcolor=\"#000000\" text=\"#FFFFFF\">\n";
 
 %hosts=(	"01","cv:Cabo Verde:#00FF00",
-			#"02","up:Chandler:#FF0080",
+			"02","ge:Geral:#FF0080",
 			#"03","ra:Raw:#FF8373",
 			#"04","ro:Ross:#008080",
 			#"05","sv:São Vicente:#FFFFFF",
@@ -29,14 +29,16 @@ print "<body bgcolor=\"#000000\" text=\"#FFFFFF\">\n";
 
 			);
 
-$on  = "<img src=\"imagens/on.png\" width=\"32\" height=\"32\">";
-$off = "<img src=\"imagens/off.png\" width=\"32\" height=\"32\">";
-$agora = time+21600;	
+$on  = "<img src=\"/ip/imagens/on.png\" width=\"32\" height=\"32\">";
+$off = "<img src=\"/ip/imagens/off.png\" width=\"32\" height=\"32\">";
+$agora = time;	
+$localtime = localtime;
+print "Time:",$localtime,"</p>";
 
 print "<table border=\"1\" cellpadding=\"0\" cellspacing=\"0\">\n";
 
 print "<tr>";
-print "<td colspan=\"5\"><font color=\"#FFFFFF\">Controle de servidores: [",scalar(localtime($agora)),"]</font></td>";
+print "<td colspan=\"5\"><font color=\"#FFFFFF\">Controle de servidores: [$localtime]</font></td>";
 print "</tr>\n";
 
 foreach $host (sort keys %hosts) {
@@ -47,11 +49,12 @@ foreach $host (sort keys %hosts) {
 		$linha = <FILE>;
 	close(FILE);
 	
-	@info = split("]",$linha);
-		
-	$hora = substr($info[0],1);
-	$hora_scalar = scalar (localtime($hora));
-	$diferenca = $agora - $hora;
+	@info = split("#",$linha);
+	$hora = $info[0];
+
+        $hora_epoch = $info[2];
+	
+	$diferenca = $agora - $hora_epoch;
 	if ( $diferenca < 1200 ) { 
 		$status = $on;
 	}	else { 
@@ -63,7 +66,7 @@ foreach $host (sort keys %hosts) {
 	print "<td>&nbsp;$diferenca</td>";
 	print "<td width=\"130\"><font color=\"$dados[2]\">&nbsp;$dados[1]</font></td>";
 	print "<td width=\"170\"><font color=\"$dados[2]\">&nbsp;$info[1]</font></td>";
-	print "<td width=\"250\"><font color=\"$dados[2]\">&nbsp;$hora_scalar</font></td>";
+	print "<td width=\"250\"><font color=\"$dados[2]\">&nbsp;$hora</font></td>";
 	print "</tr>\n";
 	
 }
