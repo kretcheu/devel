@@ -31,7 +31,7 @@ print "<body bgcolor=\"#000000\" text=\"#FFFFFF\">\n";
 
 $on  = "<img src=\"imagens/on.png\" width=\"32\" height=\"32\" alt=\"On\" />";
 $off = "<img src=\"imagens/off.png\" width=\"32\" height=\"32\" alt=\"Off\" />";
-$agora = time;	
+$agora = time;
 $localtime = localtime;
 
 print "<table border=\"1\" cellpadding=\"0\" cellspacing=\"0\">\n";
@@ -52,20 +52,20 @@ print "</tr>\n";
 foreach $host (sort keys %hosts) {
 
 	@dados = split(":",$hosts{$host});
-	
+
 	open (FILE,"logs/$dados[0].txt");
 		$linha = <FILE>;
 	close(FILE);
-	
+
 	@info = split("#",$linha);
 	$hora = $info[0];
 
         $hora_epoch = $info[2];
-	
+
 	$diferenca = $agora - $hora_epoch;
-	if ( $diferenca < 1200 ) { 
+	if ( $diferenca < 1200 ) {
 		$status = "<font color=\"#00FF00\">On</font>";
-	}	else { 
+	}	else {
 		$status = "<font color=\"#FF0000\">Off</font>";
 	}
 
@@ -76,7 +76,7 @@ foreach $host (sort keys %hosts) {
 	print "<td width=\"170\"><font color=\"$dados[2]\">&nbsp;$info[1]</font></td>";
 	print "<td width=\"250\"><font color=\"$dados[2]\">&nbsp;$hora</font></td>";
 	print "</tr>\n";
-	
+
 }
 
 #print "<font color=\"#ffbd71\" >";
