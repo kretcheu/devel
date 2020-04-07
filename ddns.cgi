@@ -11,7 +11,7 @@ print "<body bgcolor=\"#000000\" text=\"#FFFFFF\">\n";
 			"02","ge:Geral:#FF0080",
 			"03","ip:IP:#FF8373",
 			#"04","ro:Ross:#008080",
-			#"05","sv:São Vicente:#FFFFFF",
+			"05","sv:São Vicente:#FFFFFF",
 			#"06","st:Tilápia:#80A8FF",
 			#"07","ca:Carpa:#ffbd71",
                         #"08","st2:Cara:#8EFFAC",
@@ -29,8 +29,8 @@ print "<body bgcolor=\"#000000\" text=\"#FFFFFF\">\n";
 
 			);
 
-$on  = "<img src=\"imagens/on.png\" width=\"32\" height=\"32\">";
-$off = "<img src=\"imagens/off.png\" width=\"32\" height=\"32\">";
+$on  = "<img src=\"imagens/on.png\" width=\"32\" height=\"32\" alt=\"On\" />";
+$off = "<img src=\"imagens/off.png\" width=\"32\" height=\"32\" alt=\"Off\" />";
 $agora = time;	
 $localtime = localtime;
 
@@ -39,6 +39,15 @@ print "<table border=\"1\" cellpadding=\"0\" cellspacing=\"0\">\n";
 print "<tr>";
 print "<td colspan=\"5\"><font color=\"#FFFFFF\">Controle de servidores: [$localtime]</font></td>";
 print "</tr>\n";
+
+print "<tr>";
+print "<th>Estado</th>";
+print "<th>&nbsp;Diferença</th>";
+print "<th width=\"130\"><font color=\"$dados[2]\">&nbsp;Servidor</font></th>";
+print "<th width=\"170\"><font color=\"$dados[2]\">&nbsp;IP</font></th>";
+print "<th width=\"250\"><font color=\"$dados[2]\">&nbsp;Horário</font></th>";
+print "</tr>\n";
+
 
 foreach $host (sort keys %hosts) {
 
@@ -55,9 +64,9 @@ foreach $host (sort keys %hosts) {
 	
 	$diferenca = $agora - $hora_epoch;
 	if ( $diferenca < 1200 ) { 
-		$status = $on;
+		$status = "<font color=\"#00FF00\">On</font>";
 	}	else { 
-		$status = $off;
+		$status = "<font color=\"#FF0000\">Off</font>";
 	}
 
 	print "<tr>";
