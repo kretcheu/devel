@@ -1,0 +1,62 @@
+#!/bin/bash
+# Session Name
+
+SESSION="Donnaco2"
+SESSIONEXISTS=$(tmux list-sessions | grep ${SESSION})
+
+# Only create tmux SESSION if it doesn't already exist
+
+if [ "${SESSIONEXISTS}" = "" ]
+then
+
+   # Start New Session with our name
+   tmux start-server
+   tmux new-SESSION -d -s $SESSION -n Admin
+
+   # Creating panes
+
+   tmux select-window -t $SESSION:0
+
+   tmux split-window -v
+   tmux split-window -h
+   tmux select-pane -t 0
+   tmux split-window -h
+
+   # Create new window and more panes
+
+   tmux new-window -t $SESSION:1 -n 'Work'
+
+   tmux split-window -v
+   tmux split-window -h
+   tmux select-pane -t 0
+   tmux split-window -h
+
+   # Select each panel and run some command
+   # C-m equals to press enter key
+
+   tmux select-pane -t 0
+   tmux send-keys -t $SESSION:1 "cd hack/devel" C-m "clear" C-m
+
+   tmux select-pane -t 3
+   tmux send-keys -t $SESSION:1 "cd hack/kvb/aulas" C-m "clear" C-m
+
+   tmux select-pane -t 2
+   tmux send-keys -t $SESSION:1 "cd hack/tutoriais" C-m "clear" C-m
+
+
+   tmux select-window -t $SESSION:0
+
+   tmux select-pane -t 2
+   tmux send-keys -t $SESSION:1 "df -h" C-m
+
+   tmux select-pane -t 1
+   tmux send-keys -t $SESSION:0 "su" C-m
+
+   tmux select-pane -t 0
+   tmux send-keys -t $SESSION:0 "su" C-m
+
+fi
+
+# Attach on session
+
+tmux attach-SESSION -t $SESSION
