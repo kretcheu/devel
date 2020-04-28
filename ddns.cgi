@@ -11,8 +11,8 @@ print "<body bgcolor=\"#000000\" text=\"#FFFFFF\">\n";
 			"02","ge:Geral:#FF0080",
 			"03","ip:IP:#FF8373",
 			#"04","ro:Ross:#008080",
-			"05","sv:S„o Vicente:#FFFFFF",
-			#"06","st:Til·pia:#80A8FF",
+			"05","sv:S√£o Vicente:#FFFFFF",
+			#"06","st:Til√°pia:#80A8FF",
 			#"07","ca:Carpa:#ffbd71",
                         #"08","st2:Cara:#8EFFAC",
 			#"09","el:Orsi:#FF8373",
@@ -42,10 +42,10 @@ print "</tr>\n";
 
 print "<tr>";
 print "<th>Estado</th>";
-print "<th>&nbsp;DiferenÁa</th>";
+print "<th>&nbsp;Diferen√ßa</th>";
 print "<th width=\"130\"><font color=\"$dados[2]\">&nbsp;Servidor</font></th>";
 print "<th width=\"170\"><font color=\"$dados[2]\">&nbsp;IP</font></th>";
-print "<th width=\"250\"><font color=\"$dados[2]\">&nbsp;Hor·rio</font></th>";
+print "<th width=\"250\"><font color=\"$dados[2]\">&nbsp;Hor√°rio</font></th>";
 print "</tr>\n";
 
 
