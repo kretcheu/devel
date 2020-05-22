@@ -161,16 +161,24 @@ HORARIO="${COR_HORARIO}\t"
 
 
 ASPAS="'"
-#BATERIA='['${COR_BATERIA}'$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 |grep percentage | awk {'${ASPAS}' print $2'"${ASPAS}"'})'${COR_BASE}']'
 BATERIA='['${COR_BATERIA}'$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 |grep percentage | rev | cut -c 1-3 |rev)'${COR_BASE}']'
-#BATERIA=""
 DEPOIS="\n${COR_BASE}${DES[1]}"
 CURSOR="${COR_CURSOR} "'\$'" "
 
-#LOADAVERAGE='['${COR_BATERIA}'$(uptime | awk {'${ASPAS}' print $8" " $9" " $10'"${ASPAS}"'})'${COR_BASE}']'
 LOADAVERAGE='['${COR_BATERIA}'$(cat /proc/loadavg | cut -d" " -f1-3)'${COR_BASE}']'
 
+# Com Bateria e Loadaverage
+
 PS1="${ANTES}${ERRO}${COR_BASE}[${USER}${COR_ARROBA}@${SERVER}${COR_BASE}]${SEPARADOR}${COR_BASE}[${DIR}${COR_BASE}]${SEPARADOR}[${HORARIO}${COR_BASE}]${SEPARADOR}${BATERIA}${SEPARADOR}${LOADAVERAGE}${DEPOIS}${CURSOR}${COR[0]}"
+
+# Sem Bateria com Loadaverage
+
+#PS1="${ANTES}${ERRO}${COR_BASE}[${USER}${COR_ARROBA}@${SERVER}${COR_BASE}]${SEPARADOR}${COR_BASE}[${DIR}${COR_BASE}]${SEPARADOR}[${HORARIO}${COR_BASE}]${SEPARADOR}${LOADAVERAGE}${DEPOIS}${CURSOR}${COR[0]}"
+
+# Sem Bateria e sem Loadaverage
+
+#PS1="${ANTES}${ERRO}${COR_BASE}[${USER}${COR_ARROBA}@${SERVER}${COR_BASE}]${SEPARADOR}${COR_BASE}[${DIR}${COR_BASE}]${SEPARADOR}[${HORARIO}${COR_BASE}]${DEPOIS}${CURSOR}${COR[0]}"
+
 
    if [ $# -eq 1 ]
    then
