@@ -107,7 +107,7 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 #bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+#bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -136,6 +136,7 @@ set $ws7 "7:  "
 set $ws8 "8:  "
 set $ws9 "9:  "
 set $ws10 "10:  "
+set $ws11 "11:"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -148,6 +149,7 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
+bindsym $mod+minus workspace $ws11
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -160,7 +162,9 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+minus move container to workspace $ws11
 
+bindsym $mod+Shift+question layout toggle all
 # switch to next workspace
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
@@ -168,20 +172,26 @@ bindsym $mod+Shift+Tab workspace prev
 # Assigned applications
 
 assign [class="Mate-terminal"] $ws1
-assign [class="Chromium"] $ws2
+assign [class="Chromium"] $ws11
 assign [class="mpv"] $ws3
+assign [class="Webcamoid"] $ws3
 assign [class="Virt-manager"] $ws4
+assign [class="Xephyr"] $ws4
 assign [class="Popcorn-Time"] $ws5
-assign [class="Firefox"] $ws5
+assign [class="Firefox"] $ws2
 assign [class="obs"] $ws6
 assign [class="Atril"] $ws7
-assign [class="libreoffice-startcenter|Soffice"] $ws7
+assign [class="libreoffice-startcenter|libreoffice|libreoffice-impress"] $ws7
+assign [title="^.*[lL]ibre[oO]ffice.*$"]  $ws7
+#assign [class="libreoffice-startcenter|Soffice"] $ws7
 assign [class="Pluma"] $ws7
 assign [class="thunderbird"] $ws8
 assign [class="(?i)Inkscape"] $ws9
 assign [class="Gimp"] $ws10
 assign [class="Eom"] $ws10
-assign [class="Lxterminal"] $ws7
+assign [class="Audacity"] $ws11
+assign [class="Lxterminal"] $ws8
+assign [class="Transmission-gtk"] $ws8
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -261,19 +271,24 @@ bar {
 exec_always --no-startup-id nm-applet --sm-disable
 exec --no-startup-id gtk-redshift
 exec --no-startup-id mate-terminal --maximize --command "bash -c /usr/local/bin/session; bash"
-exec --no-startup-id chromium
+#exec --no-startup-id chromium
+#exec --no-startup-id firefox
 #exec --no-startup-id compton -f
-exec --no-startup-id xautolock -time 5 -locker 'i3lock-fancy -g'
+exec --no-startup-id xautolock -time 10 -locker 'i3lock-fancy -g'
 #/usr/lib/xscreensaver/bsod -root
 
 #exec --no-startup-id mate-screensaver
 
 # Applications floating
 for_window [class="mpv"] floating enable border pixel 2
+for_window [class="Webcamoid"] floating enable border pixel 2
 for_window [instance=mpv] sticky enable
+for_window [instance=Webcamoid] sticky enable
 for_window [class="Galculator"] floating enable border pixel 2
 for_window [class="Leafpad"] floating enable border pixel 2 resize set 400 500
+for_window [class="Pavucontrol"] floating enable border pixel 2 resize set 700 500
 for_window [class="Lxterminal"] floating enable
+for_window [class="Xephyr"] floating enable border pixel 2
 #for_window [class="Inkscape"] floating enable border pixel 2 resize set 1000 800
 
 # Pulse Audio controls
@@ -288,8 +303,11 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 # Bind keys to integrate with Tmux
 
 bindsym $mod+q exec tmux next-window
-bindsym $mod+w exec tmux select-pane -t :.+
+bindsym $mod+e exec tmux select-pane -t :.+
+bindsym $mod+w exec tmux select-pane -t :.-
 bindsym $mod+z exec tmux resize-pane -Z
 bindsym $mod+bracketleft exec tmux swap-pane -t :.-
 bindsym $mod+bracketright exec tmux swap-pane -t :.+
 
+for_window [workspace=$ws4] layout tabbed
+for_window [workspace=$ws7] layout tabbed
