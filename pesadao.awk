@@ -31,23 +31,31 @@ BEGIN {
 
 
 NR {
-   pacote = substr($1, index($1, ": ")+1)
+   pacote = substr($1, index($1, ": ")+2)
    tamanho = substr($5, index($5, ": ")+1)
 
    tamanho = tamanho*1
+   array [pacote]=tamanho
+}
 
-   for (x=1024^2; x>=1024; x/=1024) {
-      if ( tamanho>=x ) {
-        printf "%.2d %s",tamanho/x,hum[x]
-        break
+END {
+
+   for (i in array) {
+
+      for (x=1024^2; x>=1024; x/=1024) {
+         if ( array[i]>=x ) {
+           registro = sprintf("%.2f %s %s",array[i]/x,hum[x],i)
+           break
+         }
       }
-   }
 
-   if ( tamanho < 1024 ){
-      printf "%s","<~1Mb"
-      #print "<~1Mb"
-   }
 
-   print pacote
+     if ( array[i] < 1024 ){
+        registro = sprintf("%s %s","<~1Mb",i)
+     }
+
+     print registro | "sort -h -k1 -k2"
+  }
 
 }
+
