@@ -51,7 +51,7 @@ END {
 
 
      if ( array[i] < 1024 ){
-        registro = sprintf("%s %s","<~1Mb",i)
+        registro = sprintf("%s %s","<~1 Mb",i)
      }
 
      print registro | "sort -h -k1 -k2"
