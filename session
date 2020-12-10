@@ -1,7 +1,7 @@
 #!/bin/bash
 # Session Name
 
-SESSION="Donaco2"
+SESSION="Donaco"
 SESSIONEXISTS=$(tmux list-sessions | grep ${SESSION})
 
 # Only create tmux SESSION if it doesn't already exist
@@ -38,7 +38,7 @@ then
    tmux send-keys -t=$SESSION:1 "cd hack/devel" C-m "clear" C-m
 
    tmux select-pane -t 3
-   tmux send-keys -t=$SESSION:1 "cd hack/kvb/aulas" C-m "clear" C-m
+   tmux send-keys -t=$SESSION:1 "cd hack/kvb/curso" C-m "clear" C-m
 
    tmux select-pane -t 2
    tmux send-keys -t=$SESSION:1 "cd hack/tutoriais" C-m "clear" C-m
