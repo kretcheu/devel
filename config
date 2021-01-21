@@ -122,7 +122,7 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # block screen
-bindsym $mod+l exec i3lock-fancy -g
+bindsym $mod+l exec i3lock-fancy -p
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -186,11 +186,13 @@ assign [title="^.*[lL]ibre[oO]ffice.*$"]  $ws7
 #assign [class="libreoffice-startcenter|Soffice"] $ws7
 assign [class="Pluma"] $ws7
 assign [class="thunderbird"] $ws8
-assign [class="(?i)Inkscape"] $ws9
+#assign [class="(?i)Inkscape"] $ws9
+assign [class="Inkscape"] $ws9
 assign [class="Gimp"] $ws10
 assign [class="Eom"] $ws10
 assign [class="Audacity"] $ws11
 assign [class="Lxterminal"] $ws8
+assign [class="kdenlive"] $ws8
 assign [class="Transmission-gtk"] $ws8
 
 # reload the configuration file
@@ -274,7 +276,7 @@ exec --no-startup-id mate-terminal --maximize --command "bash -c /usr/local/bin/
 #exec --no-startup-id chromium
 #exec --no-startup-id firefox
 #exec --no-startup-id compton -f
-exec --no-startup-id xautolock -time 10 -locker 'i3lock-fancy -g'
+exec --no-startup-id xautolock -time 10 -locker 'i3lock-fancy -p'
 #/usr/lib/xscreensaver/bsod -root
 
 #exec --no-startup-id mate-screensaver
@@ -311,3 +313,4 @@ bindsym $mod+bracketright exec tmux swap-pane -t :.+
 
 for_window [workspace=$ws4] layout tabbed
 for_window [workspace=$ws7] layout tabbed
+for_window [workspace=$ws9] layout tabbed
