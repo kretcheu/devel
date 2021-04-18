@@ -271,7 +271,7 @@ bar {
 
 # Applications started allways
 exec_always --no-startup-id nm-applet --sm-disable
-exec --no-startup-id gtk-redshift
+#exec --no-startup-id gtk-redshift
 exec --no-startup-id mate-terminal --maximize --command "bash -c /usr/local/bin/session; bash"
 #exec --no-startup-id chromium
 #exec --no-startup-id firefox
