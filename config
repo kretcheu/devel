@@ -181,6 +181,7 @@ assign [class="Popcorn-Time"] $ws5
 assign [class="Firefox"] $ws2
 assign [class="obs"] $ws6
 assign [class="Atril"] $ws7
+assign [class="Zathura"] $ws7
 assign [class="libreoffice-startcenter|libreoffice|libreoffice-impress"] $ws7
 assign [title="^.*[lL]ibre[oO]ffice.*$"]  $ws7
 #assign [class="libreoffice-startcenter|Soffice"] $ws7
@@ -314,3 +315,6 @@ bindsym $mod+bracketright exec tmux swap-pane -t :.+
 for_window [workspace=$ws4] layout tabbed
 for_window [workspace=$ws7] layout tabbed
 for_window [workspace=$ws9] layout tabbed
+
+bindsym $mod+Shift+z move scratchpad
+bindsym $mod+Shift+x scratchpad show
