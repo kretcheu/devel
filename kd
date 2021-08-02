@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+posicao=${2:-2}
+grep -i "${1}" -A ${posicao} /home/kretcheu/hack/tutoriais/dicas-ng.md

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+vi +/"${1}" -u /home/kretcheu/.vim/sover.rc /home/kretcheu/hack/tutoriais/dicas-ng.md
