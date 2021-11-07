@@ -38,7 +38,7 @@ lista=$1
 if [ $# -eq 0 ]
 then
    lista='1 2 3 4 5 6 7 8'
-   orientacao="Usage: prompt [theme]"
+   orientacao="Usage: prompt [theme] [type]"
 fi
 
 for i in $lista; do
@@ -168,24 +168,24 @@ CURSOR="${COR_CURSOR} "'\$'" "
 
 LOADAVERAGE='['${COR_BATERIA}'$(cat /proc/loadavg | cut -d" " -f1-3)'${COR_BASE}']'
 
-# Com Bateria e Loadaverage
+TYPE=${2}
 
-PS1="${ANTES}${ERRO}${COR_BASE}[${USER}${COR_ARROBA}@${SERVER}${COR_BASE}]${SEPARADOR}${COR_BASE}[${DIR}${COR_BASE}]${SEPARADOR}[${HORARIO}${COR_BASE}]${SEPARADOR}${BATERIA}${SEPARADOR}${LOADAVERAGE}${DEPOIS}${CURSOR}${COR[0]}"
+case $TYPE in
+   2) # Sem Bateria com Loadaverage
+      PS1="${ANTES}${ERRO}${COR_BASE}[${USER}${COR_ARROBA}@${SERVER}${COR_BASE}]${SEPARADOR}${COR_BASE}[${DIR}${COR_BASE}]${SEPARADOR}[${HORARIO}${COR_BASE}]${SEPARADOR}${LOADAVERAGE}${DEPOIS}${CURSOR}${COR[0]}"
+      ;;
+   3) # Sem Bateria e sem Loadaverage
+      PS1="${ANTES}${ERRO}${COR_BASE}[${USER}${COR_ARROBA}@${SERVER}${COR_BASE}]${SEPARADOR}${COR_BASE}[${DIR}${COR_BASE}]${SEPARADOR}[${HORARIO}${COR_BASE}]${DEPOIS}${CURSOR}${COR[0]}"
+      ;;
+   4) # Sem Bateria, sem loadaverage sem horário
+      PS1="${ANTES}${ERRO}${COR_BASE}[${USER}${COR_ARROBA}@${SERVER}${COR_BASE}]${SEPARADOR}${COR_BASE}[${DIR}${COR_BASE}]${DEPOIS}${CURSOR}${COR[0]}"
+      ;;
+   1|*) # Com Bateria e Loadaverage
+      PS1="${ANTES}${ERRO}${COR_BASE}[${USER}${COR_ARROBA}@${SERVER}${COR_BASE}]${SEPARADOR}${COR_BASE}[${DIR}${COR_BASE}]${SEPARADOR}[${HORARIO}${COR_BASE}]${SEPARADOR}${BATERIA}${SEPARADOR}${LOADAVERAGE}${DEPOIS}${CURSOR}${COR[0]}"
+      ;;
+esac
 
-# Sem Bateria com Loadaverage
-
-#PS1="${ANTES}${ERRO}${COR_BASE}[${USER}${COR_ARROBA}@${SERVER}${COR_BASE}]${SEPARADOR}${COR_BASE}[${DIR}${COR_BASE}]${SEPARADOR}[${HORARIO}${COR_BASE}]${SEPARADOR}${LOADAVERAGE}${DEPOIS}${CURSOR}${COR[0]}"
-
-# Sem Bateria e sem Loadaverage
-
-#PS1="${ANTES}${ERRO}${COR_BASE}[${USER}${COR_ARROBA}@${SERVER}${COR_BASE}]${SEPARADOR}${COR_BASE}[${DIR}${COR_BASE}]${SEPARADOR}[${HORARIO}${COR_BASE}]${DEPOIS}${CURSOR}${COR[0]}"
-
-# Sem Bateria, sem loadaverage sem horário
-
-#PS1="${ANTES}${ERRO}${COR_BASE}[${USER}${COR_ARROBA}@${SERVER}${COR_BASE}]${SEPARADOR}${COR_BASE}[${DIR}${COR_BASE}]${DEPOIS}${CURSOR}${COR[0]}"
-
-
-   if [ $# -eq 1 ]
+   if [ $# -gt 0 ]
    then
       echo
       echo "Pare ter essa aparência no terminal vai precisar substituir a definição da variável PS1."
