@@ -1,0 +1,16 @@
+#!/bin/bash
+## Show copyrights
+
+if [[ $# -eq 0 ]] ; then
+	echo "Usage: $0 [package name]"
+	exit 1
+fi
+
+COPYRIGHT=/usr/share/doc/$1/copyright
+
+if [ ! -f "$COPYRIGHT" ]
+then
+	echo "No copyright found"
+else
+	vim -u /usr/local/bin/vimrc.changelog $COPYRIGHT
+fi

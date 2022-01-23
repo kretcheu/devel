@@ -1,0 +1,23 @@
+#!/bin/bash
+## Show change logs
+
+if [[ $# -eq 0 ]] ; then
+	echo "Usage: $0 [package name]"
+	exit 1
+fi
+
+CHANGELOG=/usr/share/doc/$1/changelog.Debian.gz
+NATIVE=/usr/share/doc/$1/changelog.gz
+
+if [ ! -f "$CHANGELOG" ]
+then
+	if [ ! -f "$NATIVE" ]
+	then
+		echo "No changelog found"
+	else
+		vim -u /usr/local/bin/vimrc.changelog /usr/share/doc/$1/changelog.gz
+	fi
+else
+	vim -u /usr/local/bin/vimrc.changelog /usr/share/doc/$1/changelog.Debian.gz
+fi
+
