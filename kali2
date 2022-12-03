@@ -1,0 +1,18 @@
+#!/bin/bash
+cd /home/kretcheu
+
+#mount /dev/sdb3 /kali
+
+losetup -P /dev/loop1 /vms/kali
+
+mount /dev/loop1p1 /kali
+
+mount --bind /proc /kali/proc
+mount --bind /sys /kali/sys
+mount --bind /dev /kali/dev
+
+/usr/sbin/chroot /kali
+
+umount -l /kali
+sleep 2
+losetup -d /dev/loop1
